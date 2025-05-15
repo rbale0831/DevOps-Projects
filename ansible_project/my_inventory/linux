@@ -1,0 +1,16 @@
+[webservers]
+servera ansible_host=192.168.0.103 ansible_user=rbale
+serverc ansible_connection=local
+localhost ansible_connection=local
+
+[dbservers]
+serverb ansible_connection=local
+serverd ansible_connection=local
+
+[centos8]
+server[a:d]
+
+[centos:children]
+centos8
+#centos7
+

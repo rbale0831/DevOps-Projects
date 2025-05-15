@@ -1,0 +1,8 @@
+---
+# roles/timesync/handlers/main.yml
+
+- name: restart chronyd
+  systemd:
+    name: chronyd
+    state: restarted
+

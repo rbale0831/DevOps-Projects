@@ -1,0 +1,9 @@
+---
+# playbooks/timesync.yml
+
+- name: Setup time synchronization using Chrony
+  hosts: all
+  become: true
+  roles:
+    - timesync
+

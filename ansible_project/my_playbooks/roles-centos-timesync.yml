@@ -1,0 +1,11 @@
+- name: Setup timesync
+  hosts: all
+  become: true
+
+  vars:
+  
+    timesync_ntp_servers:
+      - hostname: 0.centos.pool.ntp.org
+
+    roles:
+      - centos-system-roles.chrony

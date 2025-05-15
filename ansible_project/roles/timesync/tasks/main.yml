@@ -1,0 +1,23 @@
+---
+# roles/timesync/tasks/main.yml
+
+- name: Install chrony
+  yum:
+    name: chrony
+    state: present
+
+- name: Ensure chrony is enabled and started
+  systemd:
+    name: chronyd
+    enabled: yes
+    state: started
+
+- name: Configure NTP servers in chrony.conf
+  lineinfile:
+    path: /etc/chrony.conf
+    regexp: "^server"
+    line: "server {{ item }} iburst"
+    state: present
+  loop: "{{ timesync_ntp_servers }}"
+  notify: restart chronyd
+

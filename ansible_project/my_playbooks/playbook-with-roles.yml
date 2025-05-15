@@ -1,0 +1,11 @@
+- name: Setup timesync
+  host: all
+  become: true
+
+  vars:
+  
+    timesync_ntp_servers:
+      - hostname: 0.pool.rhel.ntp.org
+
+    roles:
+      - rhel-system-roles.timesync
